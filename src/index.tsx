@@ -1,15 +1,35 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HelloWorld from './HelloWorld';
+import HelloReact from './HelloReact';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HelloWorld />
+  },
+  {
+    path: "/helloreact",
+    element: <HelloReact />
+  },
+  {
+    path: "/app",
+    element: <App />
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
+    {/* <App /> */}
   </React.StrictMode>
 );
 
