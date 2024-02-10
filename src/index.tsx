@@ -3,9 +3,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HelloWorld from './HelloWorld';
-import HelloReact from './HelloReact';
-import App from './App';
+import HelloWorld from './components/HelloWorld';
+import HelloReact from './components/HelloReact';
+import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([

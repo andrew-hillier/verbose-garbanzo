@@ -1,5 +1,5 @@
 import './HelloReact.css'
-import logo from './logo.svg';
+import logo from './../resources/assets/logo.svg';
 
 function HelloReact() {
     return (
