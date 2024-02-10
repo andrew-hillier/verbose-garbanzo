@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HelloWorld from './HelloWorld';
+import HelloReact from './HelloReact';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HelloWorld />
+  },
+  {
+    path: "/helloreact",
+    element: <HelloReact />
   },
   {
     path: "/app",
