@@ -13,6 +13,27 @@ export class Pokemon {
 };
 
 export class PokemonService {
+    getPokemonCollection(): Promise<Pokemon[]> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve([
+                    new Pokemon(
+                        faker.animal.cat(),
+                        faker.lorem.paragraph()),
+                    new Pokemon(
+                        faker.animal.cat(),
+                        faker.lorem.paragraph()),
+                    new Pokemon(
+                        faker.animal.cat(),
+                        faker.lorem.paragraph()),
+                    new Pokemon(
+                        faker.animal.cat(),
+                        faker.lorem.paragraph())
+                ])
+            }, 1500);
+        });
+    };
+
     getPokemon(): Promise<Pokemon> {
         return new Promise((resolve) => {
             setTimeout(() => {

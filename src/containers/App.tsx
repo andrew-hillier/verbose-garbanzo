@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Pokemon, PokemonService } from "../pokemon";
+import PokemonCard from "../components/PokemonCard";
 
 function App() {
   const nodeEnv = process.env.NODE_ENV || "(null)";
   const testVariable = process.env.REACT_APP_TEST_VARIABLE || "(null)";
 
-  const [pokemonInstance, setPokemonInstance] = useState<Pokemon>();
+  const [pokemonCollection, setPokemonCollection] = useState<Pokemon[]>();
 
   useEffect(() => {
     const pokemonService = new PokemonService();
-    pokemonService.getPokemon()
+
+    pokemonService.getPokemonCollection()
       .then(data => {
-        setPokemonInstance(data);
+        setPokemonCollection(data);
       });
   }, []);
 
@@ -34,19 +36,26 @@ function App() {
       </nav>
 
       <div id="content" className="container">
-        <h2>Page Title</h2>
+        <h2>Pokemon</h2>
 
-        {pokemonInstance === undefined ? (
+        {pokemonCollection === undefined ? (
           <div>loading...</div>
         ) : (
           <div>
+
+
+            {pokemonCollection?.map(pokemon =>
+              <PokemonCard pokemon={pokemon} />
+            )}
+
+            <hr />
+
             nodeEnv: {nodeEnv}
             <br />
             testVariable: {testVariable}
             <br />
-            pokemonInstance.name: {pokemonInstance?.name}
-            <br />
-            pokemonInstance.description: {pokemonInstance?.description}
+
+            <hr />
 
             <div className="mb-3">
               <label htmlFor="emailAddressInput" className="form-label">name</label>
