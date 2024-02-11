@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pokemon, getPokemon } from "../pokemon";
+import { Pokemon, PokemonService } from "../pokemon";
 
 function App() {
   const nodeEnv = process.env.NODE_ENV || "(null)";
@@ -8,7 +8,8 @@ function App() {
   const [pokemonInstance, setPokemonInstance] = useState<Pokemon>();
 
   useEffect(() => {
-    getPokemon()
+    const pokemonService = new PokemonService();
+    pokemonService.getPokemon()
       .then(data => {
         setPokemonInstance(data);
       });
