@@ -6,7 +6,7 @@ function App() {
   const nodeEnv = process.env.NODE_ENV || "(null)";
   const testVariable = process.env.REACT_APP_TEST_VARIABLE || "(null)";
 
-  const [pokemonCollection, setPokemonCollection] = useState<Pokemon[]>();
+  const [pokemonCollection, setPokemonCollection] = useState<void | Pokemon[]>();
 
   useEffect(() => {
     const pokemonService = new PokemonService();
@@ -42,10 +42,8 @@ function App() {
           <div>loading...</div>
         ) : (
           <div>
-
-
             {pokemonCollection?.map(pokemon =>
-              <PokemonCard pokemon={pokemon} />
+              <PokemonCard key={pokemon.name} pokemon={pokemon} />
             )}
 
             <hr />
