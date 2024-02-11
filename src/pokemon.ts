@@ -6,10 +6,12 @@ export class Pokemon {
     }
 };
 
-export function getPokemon(): Promise<Pokemon> {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(new Pokemon('Bulbasaur'))
-        }, 1500);
-    });
+export class PokemonService {
+    getPokemon(): Promise<Pokemon> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(new Pokemon('Bulbasaur'))
+            }, 1500);
+        });
+    };
 };
