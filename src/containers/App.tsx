@@ -35,7 +35,7 @@ function App() {
       <div id="content" className="container">
         <h2>Page Title</h2>
 
-        {pokemonInstance == undefined ? (
+        {pokemonInstance === undefined ? (
           <div>loading...</div>
         ) : (
           <div>
