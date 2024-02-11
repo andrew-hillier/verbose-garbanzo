@@ -42,19 +42,25 @@ function App() {
           <div>loading...</div>
         ) : (
           <div>
-            {/* nodeEnv: {nodeEnv}
-            <br />
-            testVariable: {testVariable}
-            <br /> */}
+
 
             {pokemonCollection?.map(pokemon =>
               <PokemonCard pokemon={pokemon} />
             )}
 
-            {/* <div className="mb-3">
+            <hr />
+
+            nodeEnv: {nodeEnv}
+            <br />
+            testVariable: {testVariable}
+            <br />
+
+            <hr />
+
+            <div className="mb-3">
               <label htmlFor="emailAddressInput" className="form-label">name</label>
               <input className="form-control" id="emailAddressInput" placeholder="John Doe" />
-            </div> */}
+            </div>
 
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Launch demo modal
