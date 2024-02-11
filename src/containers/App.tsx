@@ -45,6 +45,8 @@ function App() {
             testVariable: {testVariable}
             <br />
             pokemonInstance.name: {pokemonInstance?.name}
+            <br />
+            pokemonInstance.description: {pokemonInstance?.description}
 
             <div className="mb-3">
               <label htmlFor="emailAddressInput" className="form-label">name</label>
