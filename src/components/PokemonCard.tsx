@@ -11,6 +11,6 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
             </div>
         </div>
     );
-};
+}
 
 export default PokemonCard;

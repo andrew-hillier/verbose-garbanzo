@@ -10,7 +10,7 @@ export class Pokemon {
         this.name = name;
         this.description = description;
     }
-};
+}
 
 export class PokemonService {
     getPokemonCollection(): Promise<void | Pokemon[]> {
@@ -18,7 +18,7 @@ export class PokemonService {
         return process.env.REACT_APP_USE_API
             ? this.getFromApi()
             : this.getFromFaker();
-    };
+    }
 
     getPokemon(): Promise<Pokemon> {
         return new Promise((resolve) => {
@@ -28,7 +28,7 @@ export class PokemonService {
                     faker.lorem.paragraph()))
             }, 1500);
         });
-    };
+    }
 
     private getFromApi(): Promise<void | Pokemon[]> {
         return fetch(`https://pokeapi.co/api/v2/pokemon`)
@@ -39,7 +39,7 @@ export class PokemonService {
                 return response.json();
             })
             .then((data) => {
-                let collection: Pokemon[] = [];
+                const collection: Pokemon[] = [];
                 data.results.forEach((result: { name: string; url: string; }) => {
                     collection.push(new Pokemon(result.name, result.url));
                 });
@@ -71,4 +71,4 @@ export class PokemonService {
             }, 1500);
         });
     }
-};
+}

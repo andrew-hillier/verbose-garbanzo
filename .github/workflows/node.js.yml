@@ -35,6 +35,8 @@ jobs:
     
     - run: npm test
 
+    - run: npm run lint
+
     - name: Cypress run
       uses: cypress-io/github-action@v6
       with:

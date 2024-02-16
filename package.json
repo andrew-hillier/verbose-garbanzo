@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
@@ -26,7 +27,9 @@
     "test:run": "set CI=true&&react-scripts test",
     "test:coverage": "set CI=true&&react-scripts test --coverage",
     "test:e2e:open": "cypress open",
-    "test:e2e:run": "cypress run"
+    "test:e2e:run": "cypress run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -47,7 +50,10 @@
     ]
   },
   "devDependencies": {
+    "@eslint/js": "^8.56.0",
     "@faker-js/faker": "^8.4.1",
-    "cypress": "^13.6.4"
+    "cypress": "^13.6.4",
+    "eslint": "^8.56.0",
+    "typescript-eslint": "^7.0.1"
   }
 }

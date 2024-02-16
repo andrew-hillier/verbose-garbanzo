@@ -4,6 +4,6 @@ function HelloWorld() {
             <div>Hello World!</div>
         </div>
     );
-};
+}
 
 export default HelloWorld;
