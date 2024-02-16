@@ -20,6 +20,6 @@ function HelloReact() {
             </header>
         </div>
     );
-};
+}
 
 export default HelloReact;
