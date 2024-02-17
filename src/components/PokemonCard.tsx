@@ -1,16 +1,38 @@
-import { Pokemon } from "../pokemon";
+import { useEffect, useState } from "react";
+import { PokemonStub } from "../models/PokemonStub";
+import { Pokemon } from "../models/Pokemon";
+import { PokemonServiceProvider } from '../services/PokemonServiceProvider';
 
-function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
-    return (
-        <div className="card">
-            <div className="card-body">
-                <h5 className="card-title">{pokemon?.name}</h5>
-                <p className="card-text">
-                    {pokemon?.description}
-                </p>
-            </div>
-        </div>
-    );
+function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
+  const [pokemon, setPokemon] = useState<void | Pokemon>();
+
+  useEffect(() => {
+    const pokemonService = new PokemonServiceProvider().getService(); // todo static?
+
+    pokemonService.getPokemon(0) // todo: get id from stub
+      .then(data => {
+        setPokemon(data);
+      })
+  }, [pokemonStub]);
+
+  return (
+    <div className="card">
+      <div className="card-body">
+        {pokemon === undefined ? (
+          <div>loading...</div>
+        ) : (
+          <div>
+            <h5 className="card-title">{pokemon?.name}</h5>
+            <p className="card-text">
+              {pokemon?.type1}
+              <br />
+              {pokemon?.type2}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default PokemonCard;
