@@ -17,18 +17,22 @@ export class FakerPokemonService implements IPokemonService {
         }
 
         return new Promise((resolve) => {
-            resolve(collection);
+            setTimeout(() => {
+                resolve(collection);
+            }, 1500);
         });
     }
 
     getPokemon(id: number): Promise<void | Pokemon> {
+        const pokemon = new Pokemon(
+            id,
+            faker.animal.cat(),
+            faker.word.noun(),
+            faker.word.noun())
+
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve(new Pokemon(
-                    id,
-                    faker.animal.cat(),
-                    faker.word.noun(),
-                    faker.word.noun()));
+                resolve(pokemon);
             }, 1500);
         });
     }
