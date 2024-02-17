@@ -6,7 +6,7 @@ import { IPokemonService } from './IPokemonService';
 
 export class FakerPokemonService implements IPokemonService {
     getPokemonCollection(limit: number): Promise<void | PokemonStub[]> {
-        let collection: PokemonStub[] = []
+        const collection: PokemonStub[] = []
 
         for (let i = 0; i < limit; i++) {
             collection.push(
