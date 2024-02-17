@@ -1,11 +1,11 @@
 import { faker } from '@faker-js/faker';
 import { PokemonStub } from "../models/PokemonStub";
+import { Page } from "../models/Page";
 import { Pokemon } from "../models/Pokemon";
 import { IPokemonService } from './IPokemonService';
 
-
 export class FakerPokemonService implements IPokemonService {
-    getPokemonCollection(limit: number): Promise<void | PokemonStub[]> {
+    getPokemonCollection(offset: number, limit: number): Promise<void | Page<PokemonStub>> {
         const collection: PokemonStub[] = []
 
         for (let i = 0; i < limit; i++) {
@@ -16,10 +16,17 @@ export class FakerPokemonService implements IPokemonService {
             )
         }
 
+        const page = new Page(
+            faker.number.int({ min: 1, max: 500 }),
+            offset,
+            limit,
+            collection
+        )
+
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve(collection);
-            }, 1500);
+                resolve(page);
+            }, faker.number.int({ min: 200, max: 2000 }));
         });
     }
 
@@ -33,8 +40,7 @@ export class FakerPokemonService implements IPokemonService {
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(pokemon);
-            }, 1500);
+            }, faker.number.int({ min: 200, max: 2000 }));
         });
     }
-
 }

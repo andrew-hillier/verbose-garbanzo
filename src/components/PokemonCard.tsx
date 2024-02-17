@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { PokemonStub } from "../models/PokemonStub";
 import { Pokemon } from "../models/Pokemon";
 import { PokemonServiceProvider } from '../services/PokemonServiceProvider';
+import Loader from "./Loader";
 
 function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
   const [pokemon, setPokemon] = useState<void | Pokemon>();
@@ -19,7 +20,7 @@ function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
     <div className="card">
       <div className="card-body">
         {pokemon === undefined ? (
-          <div>loading...</div>
+          <Loader />
         ) : (
           <div>
             <h5 className="card-title">{pokemon?.name}</h5>

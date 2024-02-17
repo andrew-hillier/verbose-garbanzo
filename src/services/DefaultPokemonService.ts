@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 import { PokemonStub } from "../models/PokemonStub";
 import { Pokemon } from "../models/Pokemon";
 import { IPokemonService } from './IPokemonService';
+import { Page } from '../models/Page';
 
 
 export class DefaultPokemonService implements IPokemonService {
@@ -11,7 +12,7 @@ export class DefaultPokemonService implements IPokemonService {
         this.baseUrl = baseUrl;
     }
 
-    getPokemonCollection(limit: number): Promise<void | PokemonStub[]> {
+    getPokemonCollection(offset: number, limit: number): Promise<void | Page<PokemonStub>> {
         let url = `${this.baseUrl}/api/v2/pokemon`
         if (limit) {
             url += `?limit=${limit}`
@@ -30,7 +31,9 @@ export class DefaultPokemonService implements IPokemonService {
                     collection.push(new PokemonStub(result.name, result.url));
                 });
 
-                return collection as PokemonStub[];
+                const page = new Page<PokemonStub>(data.count, offset, limit, collection);
+
+                return page;
             })
             .catch((err) => {
                 console.log(err.message);
