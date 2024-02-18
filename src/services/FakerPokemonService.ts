@@ -9,10 +9,11 @@ export class FakerPokemonService implements IPokemonService {
         const collection: PokemonStub[] = []
 
         for (let i = 0; i < limit; i++) {
+            const url = `invalid-web-address/${faker.number.int({ min: 1, max: 1500 })}/`
             collection.push(
                 new PokemonStub(
                     faker.animal.cat(),
-                    faker.lorem.paragraph()),
+                    url),
             )
         }
 
