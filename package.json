@@ -1,8 +1,20 @@
 {
-  "name": "my-app",
+  "name": "pokedex",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "test:run": "set CI=true&&react-scripts test",
+    "test:coverage": "set CI=true&&react-scripts test --coverage",
+    "test:e2e:open": "cypress open",
+    "test:e2e:run": "cypress run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
@@ -19,17 +31,12 @@
     "typescript": "^4.9.5",
     "web-vitals": "^3.5.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "test:run": "set CI=true&&react-scripts test",
-    "test:coverage": "set CI=true&&react-scripts test --coverage",
-    "test:e2e:open": "cypress open",
-    "test:e2e:run": "cypress run",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+  "devDependencies": {
+    "@eslint/js": "^8.56.0",
+    "@faker-js/faker": "^8.4.1",
+    "cypress": "^13.6.4",
+    "eslint": "^8.56.0",
+    "typescript-eslint": "^7.0.1"
   },
   "eslintConfig": {
     "extends": [
@@ -48,12 +55,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@eslint/js": "^8.56.0",
-    "@faker-js/faker": "^8.4.1",
-    "cypress": "^13.6.4",
-    "eslint": "^8.56.0",
-    "typescript-eslint": "^7.0.1"
   }
 }
