@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export interface PaginationNavProps {
     pageNumber: number,
     pageSize: number,
@@ -94,7 +96,7 @@ function PaginationNav(props: PaginationNavProps) {
 
         return (
             <li className={`page-item ${disabled} ${active}`} key={key} data-testid={key}>
-                <a className={`page-link`} href={`?pageNumber=${pageNumber}&pageSize=${pageSize}`}>{content}</a>
+                <Link className={`page-link`} to={`?pageNumber=${pageNumber}&pageSize=${pageSize}`}>{content}</Link>
             </li>
         );
     }
