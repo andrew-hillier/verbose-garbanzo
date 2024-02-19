@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import PaginationNav from './PaginationNav';
+import { MemoryRouter } from 'react-router';
 
 test('when on page 1/10, should show |<, <, [1], 2, 3, >, >|', () => {
     // Act.
-    render(<PaginationNav pageNumber={1} pageSize={10} totalResults={100} />);
+    render(
+        <MemoryRouter>
+            <PaginationNav pageNumber={1} pageSize={10} totalResults={100} />
+        </MemoryRouter>);
     const first = screen.queryByTestId('first-page');
     const previous = screen.queryByTestId('previous-page');
     const page1 = screen.queryByTestId('page-1');
@@ -29,7 +33,10 @@ test('when on page 1/10, should show |<, <, [1], 2, 3, >, >|', () => {
 
 test('when on page 2/10, should show |<, <, 1, [2], 3, 4, >, >|', () => {
     // Act.
-    render(<PaginationNav pageNumber={2} pageSize={10} totalResults={100} />);
+    render(
+        <MemoryRouter>
+            <PaginationNav pageNumber={2} pageSize={10} totalResults={100} />
+        </MemoryRouter>);
     const first = screen.queryByTestId('first-page');
     const previous = screen.queryByTestId('previous-page');
     const page1 = screen.queryByTestId('page-1');
@@ -55,7 +62,10 @@ test('when on page 2/10, should show |<, <, 1, [2], 3, 4, >, >|', () => {
 
 test('when on page 3/10, should show |<, <, 1, 2, [3], 4, 5, >, >|', () => {
     // Act.
-    render(<PaginationNav pageNumber={3} pageSize={10} totalResults={100} />);
+    render(
+        <MemoryRouter>
+            <PaginationNav pageNumber={3} pageSize={10} totalResults={100} />
+        </MemoryRouter>);
     const first = screen.queryByTestId('first-page');
     const previous = screen.queryByTestId('previous-page');
     const page1 = screen.queryByTestId('page-1');
@@ -84,7 +94,10 @@ test('when on page 3/10, should show |<, <, 1, 2, [3], 4, 5, >, >|', () => {
 
 test('when on page 4/10, should show |<, <, 2, 3, [4], 5, 6, >, >|', () => {
     // Act.
-    render(<PaginationNav pageNumber={4} pageSize={10} totalResults={100} />);
+    render(
+        <MemoryRouter>
+            <PaginationNav pageNumber={4} pageSize={10} totalResults={100} />
+        </MemoryRouter>);
     const first = screen.queryByTestId('first-page');
     const previous = screen.queryByTestId('previous-page');
     const page1 = screen.queryByTestId('page-1');
@@ -114,7 +127,10 @@ test('when on page 4/10, should show |<, <, 2, 3, [4], 5, 6, >, >|', () => {
 
 test('when on page 8/10, should show |<, <, 6, 7, [8], 9, 10, >, >|', () => {
     // Act.
-    render(<PaginationNav pageNumber={8} pageSize={10} totalResults={100} />);
+    render(
+        <MemoryRouter>
+            <PaginationNav pageNumber={8} pageSize={10} totalResults={100} />
+        </MemoryRouter>);
     const first = screen.queryByTestId('first-page');
     const previous = screen.queryByTestId('previous-page');
     const page5 = screen.queryByTestId('page-5');
@@ -144,7 +160,10 @@ test('when on page 8/10, should show |<, <, 6, 7, [8], 9, 10, >, >|', () => {
 
 test('when on page 9/10, should show |<, <, 7, 8, [9], 10, >, >|', () => {
     // Act.
-    render(<PaginationNav pageNumber={9} pageSize={10} totalResults={100} />);
+    render(
+        <MemoryRouter>
+            <PaginationNav pageNumber={9} pageSize={10} totalResults={100} />
+        </MemoryRouter>);
     const first = screen.queryByTestId('first-page');
     const previous = screen.queryByTestId('previous-page');
     const page6 = screen.queryByTestId('page-6');
@@ -172,7 +191,10 @@ test('when on page 9/10, should show |<, <, 7, 8, [9], 10, >, >|', () => {
 
 test('when on page 10/10, should show |<, <, 8, 9, [10], >, >|', () => {
     // Act.
-    render(<PaginationNav pageNumber={10} pageSize={10} totalResults={100} />);
+    render(
+        <MemoryRouter>
+            <PaginationNav pageNumber={10} pageSize={10} totalResults={100} />
+        </MemoryRouter>);
     const first = screen.queryByTestId('first-page');
     const previous = screen.queryByTestId('previous-page');
     const page7 = screen.queryByTestId('page-7');
