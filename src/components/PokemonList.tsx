@@ -10,28 +10,29 @@ import Loader from "./Loader";
 function PokemonList() {
     const search = useLocation().search;
 
-    const offsetQueryParameter = new URLSearchParams(search).get('offset');
-    const limitQueryParameter = new URLSearchParams(search).get('limit');
+    const pageNumberParameter = new URLSearchParams(search).get('pageNumber');
+    const pageSizeParameter = new URLSearchParams(search).get('pageSize');
 
     // todo: there must be a better way to natively provide default value,
     //       otherwise extract this to a function...
-    const offset = isNaN(parseInt(offsetQueryParameter as string))
-        ? 0
-        : parseInt(offsetQueryParameter as string);
-    const limit = isNaN(parseInt(limitQueryParameter as string))
+    const pageNumber = isNaN(parseInt(pageNumberParameter as string))
+        ? 1
+        : parseInt(pageNumberParameter as string);
+    const pageSize = isNaN(parseInt(pageSizeParameter as string))
         ? 5
-        : parseInt(limitQueryParameter as string);
+        : parseInt(pageSizeParameter as string);
 
     const [pokemonPage, setPokemonPage] = useState<void | Page<PokemonStub>>();
 
     useEffect(() => {
         const pokemonService = new PokemonServiceProvider().getService();
 
-        pokemonService.getPokemonCollection(offset, limit)
+        // todo: work out offset, as this is what `getPokemonCollection` is expecting.
+        pokemonService.getPokemonCollection(pageNumber, pageSize)
             .then(data => {
                 setPokemonPage(data);
             });
-    }, [limit, offset]);
+    }, [pageNumber, pageSize]);
 
     return (
         <div>
@@ -49,8 +50,7 @@ function PokemonList() {
                             {pokemonPage.items?.map(pokemon =>
                                 <PokemonCard key={pokemon.name} pokemonStub={pokemon} />
                             )}
-                            {/* <PaginationNav offset={offset} limit={limit} total={21} /> */}
-                            <PaginationNav offset={offset} limit={limit} total={pokemonPage.total} />
+                            <PaginationNav pageNumber={pageNumber} pageSize={pageSize} totalResults={pokemonPage.total} />
                         </div>
                     )}
                 </div>

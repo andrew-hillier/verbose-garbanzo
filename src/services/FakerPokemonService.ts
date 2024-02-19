@@ -18,7 +18,7 @@ export class FakerPokemonService implements IPokemonService {
         }
 
         const page = new Page(
-            faker.number.int({ min: 1, max: 500 }),
+            205,
             offset,
             limit,
             collection

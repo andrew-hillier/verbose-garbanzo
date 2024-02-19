@@ -4,6 +4,6 @@ import { Pokemon } from "../models/Pokemon";
 
 
 export interface IPokemonService {
-    getPokemonCollection(offset: number, limit: number): Promise<void | Page<PokemonStub>>;
+    getPokemonCollection(pageNumber: number, pageSize: number): Promise<void | Page<PokemonStub>>;
     getPokemon(id: number): Promise<void | Pokemon>;
 }
