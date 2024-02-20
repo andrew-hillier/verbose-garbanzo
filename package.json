@@ -54,6 +54,6 @@
     "@faker-js/faker": "^8.4.1",
     "cypress": "^13.6.4",
     "eslint": "^8.56.0",
-    "typescript-eslint": "^7.0.1"
+    "typescript-eslint": "^7.0.2"
   }
 }
