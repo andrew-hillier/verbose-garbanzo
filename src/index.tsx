@@ -3,23 +3,19 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HelloWorld from './components/HelloWorld';
-import HelloReact from './components/HelloReact';
-import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
+import Navbar from './components/Navbar';
+import PokemonList from './components/PokemonList';
+import PokemonDetail from './components/PokemonDetail';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HelloWorld />
+    element: <PokemonList />
   },
   {
-    path: "/helloreact",
-    element: <HelloReact />
-  },
-  {
-    path: "/app",
-    element: <App />
+    path: "/:id",
+    element: <PokemonDetail />
   },
 ]);
 
@@ -28,8 +24,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    {/* <App /> */}
+    <Navbar />
+    <div id="content" className="container">
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>
 );
 
