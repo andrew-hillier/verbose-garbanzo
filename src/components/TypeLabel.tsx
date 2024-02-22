@@ -1,7 +1,7 @@
 import "./TypeLabel.css"
 
 function TypeLabel({ type }: { type: string }) {
-    const iconSource = `${type}_icon.png`
+    const iconSource = `${type}_icon_gh.png`
 
     return (
         <span>
