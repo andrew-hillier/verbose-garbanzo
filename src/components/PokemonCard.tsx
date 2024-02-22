@@ -4,6 +4,7 @@ import { Pokemon } from "../models/Pokemon";
 import { PokemonServiceProvider } from '../services/PokemonServiceProvider';
 import Loader from "./Loader";
 import TypeLabel from "./TypeLabel";
+import { Link } from "react-router-dom";
 
 function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
   const [pokemon, setPokemon] = useState<void | Pokemon>();
@@ -18,20 +19,32 @@ function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
   }, [pokemonStub]);
 
   return (
-    <div className="card">
-      <div className="card-body">
-        {pokemon === undefined ? (
-          <Loader />
-        ) : (
-          <div>
-            <h5 className="card-title">#{pokemon?.id} {pokemon?.name}</h5>
-            {/* todo: don't hardcode */}
-            <TypeLabel type="ghost" />
-            <TypeLabel type="fire" />
+    <div className="card mb-3">
+      {pokemon === undefined ? (
+        <Loader />
+      ) : (
+        <div className="row g-0">
+          <div className="col-md-4">
+            <img src="637.png" className="img-fluid rounded-start" alt="..." />
           </div>
-        )}
-      </div>
-    </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">#{pokemon?.id} {pokemon?.name}</h5>
+              <div>
+                <TypeLabel type="ghost" />
+                <TypeLabel type="fire" />
+              </div>
+              <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
+              {/* todo: don't hardcode */}
+
+              <Link className="btn btn-primary" to={`/${pokemon?.id}`}>See details</Link>
+            </div>
+          </div>
+        </div>
+      )
+      }
+    </div >
   );
 }
 
