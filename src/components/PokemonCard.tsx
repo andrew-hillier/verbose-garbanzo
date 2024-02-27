@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
-import { PokemonStub } from "../models/PokemonStub";
 import { Pokemon } from "../models/Pokemon";
 import { PokemonServiceProvider } from '../services/PokemonServiceProvider';
 import Loader from "./Loader";
 import TypeLabel from "./TypeLabel";
 import { Link } from "react-router-dom";
 
-function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
+function PokemonCard({ id }: { id: number }) {
   const [pokemon, setPokemon] = useState<void | Pokemon>();
 
   useEffect(() => {
     const pokemonService = new PokemonServiceProvider().getService(); // todo static?
 
-    pokemonService.getPokemon(pokemonStub.id)
+    pokemonService.getPokemon(id)
       .then(data => {
         setPokemon(data);
       })
-  }, [pokemonStub]);
+  }, [id]);
 
   return (
     <div className="card mb-3">

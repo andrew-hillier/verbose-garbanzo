@@ -47,7 +47,7 @@ function PokemonList() {
                     ) : (
                         <div>
                             {pokemonPage.items?.map(pokemon =>
-                                <PokemonCard key={pokemon.name} pokemonStub={pokemon} />
+                                <PokemonCard key={pokemon?.id} id={pokemon?.id} />
                             )}
                             <PaginationNav pageNumber={pageNumber} pageSize={pageSize} totalResults={pokemonPage.total} />
                         </div>
