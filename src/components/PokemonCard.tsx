@@ -31,8 +31,10 @@ function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
             <div className="card-body">
               <h5 className="card-title">#{pokemon?.id} {pokemon?.name}</h5>
               <div>
-                <TypeLabel type="ghost" />
-                <TypeLabel type="fire" />
+                <TypeLabel type={pokemon?.type1} />
+                {/* {pokemon?.type2 === undefined ? (
+                  <TypeLabel type={pokemon?.type2} />
+                ) : (<div></div>)} */}
               </div>
               <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
@@ -42,8 +44,7 @@ function PokemonCard({ pokemonStub }: { pokemonStub: PokemonStub }) {
             </div>
           </div>
         </div>
-      )
-      }
+      )}
     </div >
   );
 }
