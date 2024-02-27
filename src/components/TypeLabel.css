@@ -25,3 +25,19 @@
 .fire-color {
     background-color: red;
 }
+
+.grass-color {
+    background-color: green;
+}
+
+.water-color {
+    background-color: blue;
+}
+
+.electric-color {
+    background-color: yellow;
+}
+
+.normal-color {
+    background-color: grey;
+}
