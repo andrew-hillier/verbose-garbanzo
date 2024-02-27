@@ -15,7 +15,7 @@ export class DefaultPokemonService implements IPokemonService {
         const offset = (pageNumber - 1) * pageSize;
         const limit = pageSize;
 
-        let url = `${this.baseUrl}/pokemon-species?offset=${offset}&limit=${limit}` //-species
+        const url = `${this.baseUrl}/pokemon-species?offset=${offset}&limit=${limit}` //-species
 
         return await fetch(url)
             .then((response) => {
@@ -40,7 +40,7 @@ export class DefaultPokemonService implements IPokemonService {
     }
 
     async getPokemon(id: number): Promise<void | Pokemon> {
-        let url = `${this.baseUrl}/pokemon/${id}` //-species
+        const url = `${this.baseUrl}/pokemon/${id}` //-species
 
         return await fetch(url)
             .then((response) => {
