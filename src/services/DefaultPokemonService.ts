@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 import { PokemonStub } from "../models/PokemonStub";
 import { Pokemon } from "../models/Pokemon";
 import { IPokemonService } from './IPokemonService';
@@ -12,13 +11,13 @@ export class DefaultPokemonService implements IPokemonService {
         this.baseUrl = baseUrl;
     }
 
-    getPokemonCollection(offset: number, limit: number): Promise<void | Page<PokemonStub>> {
-        let url = `${this.baseUrl}/api/v2/pokemon`
-        if (limit) {
-            url += `?limit=${limit}`
-        }
+    async getPokemonCollection(pageNumber: number, pageSize: number): Promise<void | Page<PokemonStub>> {
+        const offset = (pageNumber - 1) * pageSize;
+        const limit = pageSize;
 
-        return fetch(url)
+        let url = `${this.baseUrl}/pokemon-species?offset=${offset}&limit=${limit}` //-species
+
+        return await fetch(url)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`This is an HTTP error: The status is ${response.status}`);
@@ -40,13 +39,29 @@ export class DefaultPokemonService implements IPokemonService {
             });
     }
 
-    getPokemon(id: number): Promise<void | Pokemon> {
-        return new Promise((resolve) => {
-            resolve(new Pokemon(
-                id,
-                faker.animal.cat(),
-                faker.word.noun(),
-                faker.word.noun()));
-        });
+    async getPokemon(id: number): Promise<void | Pokemon> {
+        let url = `${this.baseUrl}/pokemon/${id}` //-species
+
+        return await fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`This is an HTTP error: The status is ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const pokemon = new Pokemon(
+                    data.id,
+                    data.name,
+                    data.types[0].type.name,
+                    // data.types[1]?.type.name,
+                    data.sprites.front_default
+                );
+
+                return pokemon;
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
     }
 }

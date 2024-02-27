@@ -27,7 +27,6 @@ function PokemonList() {
     useEffect(() => {
         const pokemonService = new PokemonServiceProvider().getService();
 
-        // todo: work out offset, as this is what `getPokemonCollection` is expecting.
         pokemonService.getPokemonCollection(pageNumber, pageSize)
             .then(data => {
                 setPokemonPage(data);

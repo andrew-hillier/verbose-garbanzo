@@ -5,7 +5,10 @@ import { Pokemon } from "../models/Pokemon";
 import { IPokemonService } from './IPokemonService';
 
 export class FakerPokemonService implements IPokemonService {
-    getPokemonCollection(offset: number, limit: number): Promise<void | Page<PokemonStub>> {
+    getPokemonCollection(pageNumber: number, pageSize: number): Promise<void | Page<PokemonStub>> {
+        const offset = pageNumber * pageSize;
+        const limit = pageSize;
+
         const collection: PokemonStub[] = []
 
         for (let i = 0; i < limit; i++) {
@@ -36,7 +39,8 @@ export class FakerPokemonService implements IPokemonService {
             id,
             faker.animal.cat(),
             faker.word.noun(),
-            faker.word.noun())
+            // faker.word.noun(),
+            "")
 
         return new Promise((resolve) => {
             setTimeout(() => {
