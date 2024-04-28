@@ -50,7 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@eslint/js": "^8.57.0",
+    "@eslint/js": "^9.1.1",
     "@faker-js/faker": "^8.4.1",
     "cypress": "^13.8.0",
     "eslint": "^8.57.0",
